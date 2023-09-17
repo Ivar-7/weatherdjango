@@ -15,7 +15,9 @@ import urllib.request
 def home(request):
     if request.method == 'POST':
         city = request.POST['city']
-        res = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=1de3e19731a4550651a2598fd3eca733').read()
+        lat = 30.0333
+        lon = 31.2333
+        res = urllib.request.urlopen('api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=f83d7fd156d31449f81256ec49138590').read()
         json_data = json.loads(res)
         data = {
             "country_code": str(json_data['sys']['country']),
