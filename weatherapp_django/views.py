@@ -17,7 +17,7 @@ def home(request):
         city = request.POST['city']
         lat = 30.0333
         lon = 31.2333
-        res = urllib.request.urlopen('api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=f83d7fd156d31449f81256ec49138590').read()
+        res = urllib.request.urlopen('api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=').read()
         json_data = json.loads(res)
         data = {
             "country_code": str(json_data['sys']['country']),
