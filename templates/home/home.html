@@ -1,0 +1,41 @@
+<h1 style="color: blue; text-align: center; background-color: gray; border-radius: 50%;">WEATHER APP</h1>
+
+{% if user.is_authenticated %}
+<div style="text-align: right;">
+    <button style="background-color: aquamarine;"> <a href="dashboard" style="text-decoration: none; color: black;"> Dashboard </a> </button>
+    <button style="background-color: aquamarine;"> <a href="users" style="text-decoration: none; color: black;"> Users </a> </button>
+    <button style="background-color: aquamarine;"> <a href="logout" style="text-decoration: none; color: black;"> Logout </a> </button>
+</div>
+{% else %}
+<div style="text-align: right;">
+    <button style="background-color: aquamarine;"> <a href="login" style="text-decoration: none; color: black;"> Login </a> </button>
+    <button style="background-color: aquamarine;"> <a href="Register" style="text-decoration: none; color: black;"> Register </a> </button>
+</div>
+{% endif %}
+<br />
+
+<p>
+    <form method='POST' action="">
+        {% csrf_token %}
+        <div style="text-align: center;">
+            <input type="text" name="city" placeholder="Enter a city"/>
+            <button type="submit">Search</button>
+        </div>
+    </form>
+</p>
+
+{% if city %}
+<p style="text-align: center; align-self: center; align-items: center;">
+    <h1 style="text-align: center; color:black;">{{ city }}</h1>
+    <h2 style="text-align: center; color:black;">Country Code: {{ data.country_code }}</h2>
+    <h4 style="text-align: center; color:darkmagenta;">Co-ordinate: {{ data.coordinate}}</h4>
+    <h4 style="text-align: center; color:darkmagenta;">Temperature: {{ data.temperature }}</h4>
+    <h4 style="text-align: center; color:darkmagenta;">Pressure: {{ data.pressure }}</h4>
+    <h4 style="text-align: center; color:darkmagenta;">Humidity: {{ data.humidity }}</h4>
+</p>
+{% endif %}
+
+
+
+
+
